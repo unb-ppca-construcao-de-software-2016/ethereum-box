@@ -1,0 +1,28 @@
+= Box Vagrant para teste do Ethereum
+
+* Instale o http://virtualbox.org[VirtualBox] e o https://www.vagrantup.com/[Vagrant].
+* Baixe este projeto.
+* Abra um shell, vá para o diretório deste projeto, e execute os seguintes comandos:
+
+[source,bash]
+----
+# Inicie a box e abra um shell dentro dela:
+vagrant up
+vagrant ssh
+
+# Provisione a máquina manualmente. Faça isso aqui, apenas uma única vez, enquanto há um bug no provisionamento automático feito pelo Vagrant (detalhes num link dentro do Vagrantfile)
+sudo bash /vagrant/provision.sh
+
+# Carregue algumas funções no teu shell corrente
+# Dica: copie esta linha para o final do ~/.bashrc. Daí você não precisará digitar isso novamente.
+source /vagrant/functions.sh
+
+# Inicie o testrpc em background:
+testrpc &
+
+# Crie e implante a aplicação (ela residirá no diretório deste projeto):
+myapp_create_and_deploy
+----
+
+* Prossiga! Em caso de dúvidas sobre o Ethereum, contacte o https://github.com/alanMazuco[alanMazuco] (ele é o cara! ;)).
+* Se precisar destruir a box e recomeçar do zero, execute um `vagrant destroy`. Em seguida, reinicie executando os comandos acima. ;)
