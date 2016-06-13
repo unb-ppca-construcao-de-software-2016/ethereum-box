@@ -6,3 +6,7 @@ myapp_create_and_deploy() {
     truffle compile
     truffle deploy
 }
+
+f=~/.bashrc
+grep -q  '^source.*functions.sh$' $f || echo 'source /vagrant/functions.sh' >> $f
+unset f
